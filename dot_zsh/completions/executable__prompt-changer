@@ -1,0 +1,7 @@
+#compdef prompt-changer
+
+_prompt-changer (){
+    local files
+    files=($(ls $HOME/lab/Shell/prompt-changer/prompts | cut -d "." -f 1))
+    compadd $files
+}

@@ -1,0 +1,5 @@
+#compdef load-template
+
+_load-template (){
+    _files -W ~/.templates
+}
