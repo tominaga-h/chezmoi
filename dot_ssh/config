@@ -1,0 +1,133 @@
+Host e-tominaga
+  HostName e-tominaga.com
+  User e-tominaga
+
+Host kk-kojima_stg
+  HostName 150.60.213.90
+  User ah114hv6q2
+  Port 10398
+  IdentityFile /Users/hayato/.ssh/id_rsa_kojima_corp
+
+Host kk-kojima
+  HostName 150.60.213.90
+  User ah114hv6q2
+  Port 10399
+  IdentityFile /Users/hayato/.ssh/id_rsa_kojima_corp
+
+Host jma_dev
+  HostName 10.33.5.26
+  User apadmin
+  IdentityFile /Users/hayato/.ssh/jma-dev-schoolweb-ap01--apadmin.rsa
+
+Host mgps_stg
+  HostName stg.mgps.work
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/mgps-work-key.pem
+
+Host mgps_prd
+  HostName mgps.work
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/mgps-work-key.pem
+
+Host pmc_prod
+  HostName 52.194.109.179
+  User mad
+  IdentityFile /Users/hayato/.ssh/pmc_prd_mad.ppk
+
+Host mg_care_stg
+  HostName sv8002.xserver.jp
+  User magokorocare
+  Port 10022
+  IdentityFile /Users/hayato/.ssh/mg_care_stg.pem
+
+Host kodawari_stg
+  HostName 52.198.27.27
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/silverlife_ec_stg.pem
+  RemoteCommand cd /var/www/html/ec-cube/; $SHELL -il
+  RequestTTY yes
+
+Host kodawari_prd
+  HostName 	13.113.38.199
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/silverlife_ec_site.pem
+  RemoteCommand cd /var/www/html/ec-cube/; $SHELL -il
+  RequestTTY yes
+
+Host ekoes_stg
+  HostName 153.126.142.155
+  User kojima
+
+Host ekoes_prd
+  HostName 160.16.132.104
+  User kojima
+
+Host stationary_stg
+  HostName 18.176.235.122
+  User idsuser
+  IdentityFile /Users/hayato/.ssh/ideas_prod_sec.pem
+
+Host takami_dev
+  HostName 54.238.145.166
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/takami-dev-key.pem
+
+Host xover_prd
+  HostName 3.114.104.2
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/xover_website-key.pem
+
+Host i-* mi-*
+  ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+
+Host pzldjdx-ssm
+  HostName i-0bf385cb3e1332bdb
+  User ec2-user
+  IdentityFile /Users/hayato/.ssh/pzldjdx-dev-key.pem
+  ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+
+Host tkmb-bastion
+  HostName 52.69.140.4
+  User maduser
+  IdentityFile /Users/hayato/.ssh/mad-aws
+  ServerAliveInterval 120
+  TCPKeepAlive yes
+
+Host jmax_git
+    HostName 153.126.137.248
+    User jmax_git
+    Port 10022
+    IdentitiesOnly yes
+
+Host resort-dev
+    HostName 43.206.23.12
+    User ec2-user
+    IdentityFile /Users/hayato/.ssh/takami-dev-key.pem
+
+Host todaiken-dev
+    HostName 54.168.2.165
+    User ec2-user
+    IdentityFile /Users/hayato/.ssh/todaiken-dev-key.pem
+
+
+Host ts-azure-dev
+    HostName 20.157.13.154
+    User admints
+
+Host ts-azure-stage
+    HostName 20.157.12.84
+    User stgtsmpadmin
+
+Host ts-azure-prod
+    HostName 20.194.210.106
+    User prdtsmpadmin
+
+Host shinetsu-new-stg
+    HostName 52.32.112.93
+    User ec2-user
+    IdentityFile /Users/hayato/.ssh/test-shinetsu-wordpress.pem
+
+Host epl-sakura
+    HostName 153.120.154.14
+    User mad_user
+
