@@ -1,0 +1,145 @@
+# Zshrc for local
+
+key-add() {
+    eval "$(ssh-agent)"
+    ssh-add $1
+}
+
+key-del() {
+    ssh-agent -k
+}
+
+key-add-github() {
+    key-add $HOME/.ssh/github
+}
+
+key-add-mad-github() {
+    key-add $HOME/.ssh/github_mad
+}
+
+key-add-mad-okazuya() {
+    key-add $HOME/.ssh/w-okazuya
+}
+
+key-add-mad-azure() {
+    key-add $HOME/.ssh/azure_mad
+}
+
+
+gitdo() {
+    key-add-mad-github &&
+    eval "${1}" &&
+    key-del
+}
+
+gitpush() {
+    gitdo "git push origin master"
+}
+
+gitfetch() {
+    gitdo "git fetch origin master"
+}
+
+peco-add() {
+    git status | peco | xargs git add
+}
+
+branpy() {
+    git b --format='%(refname:short)' | peco | pbcopy
+}
+
+branco() {
+    git b --format='%(refname:short)' | peco | xargs git co
+}
+
+bransh() {
+    git b --format='%(refname:short)' | peco | xargs git push origin
+}
+
+branll() {
+    git b --format='%(refname:short)' | peco | xargs git pull origin
+}
+
+brange() {
+    git b --format='%(refname:short)' | peco | xargs git merge --no-ff
+}
+
+# eval "$(dircolors -b $HOME/dircolors.jellybeans)"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/.anyenv/envs/nodenv/versions/14.7.0/bin:$PATH"
+# export DENO_INSTALL="/home/alice/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
+#
+# alias code="/mnt/c/Users/tominaga/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+#
+# alias zshrc="vim $HOME/.zshrc"
+# alias zshrclocal="vim $HOME/.zshrc.local"
+# alias home="cd /mnt/c/Users/tominaga"
+#
+# export LAB="/mnt/c/Users/tominaga/lab"
+#
+# alias ll="$HOME/local/bin/exa --long --header"
+#
+# export DOCKER_HOST="tcp://0.0.0.0:2375"
+#
+# alias root="cd `git rev-parse --show-toplevel`"
+#
+# alias grep="grep -n --color=auto"
+# alias grep-files-ts="fd . -E node_modules -E lib --type f -e 'ts' -0 | xargs -0 grep"
+
+alias vim="/usr/local/bin/nvim"
+alias reload="source $HOME/.zshrc"
+alias ls="/usr/local/bin/exa --icons -F"
+
+export PATH="/usr/local/opt/bison/bin:$PATH"
+export PATH="/usr/local/opt/bzip2/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="$HOME/.symfony/bin:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$(nodenv prefix)/bin:$PATH"
+# export PKG_CONFIG_PATH="/usr/local/Cellar/krb5/1.18.3/lib/pkgconfig/"
+# export PKG_CONFIG_PATH="/usr/local/opt/libedit/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# PHP INSTALL OPTIONS
+export PHP_BUILD_CONFIGURE_OPTS="\
+  --with-zlib-dir=$(brew --prefix zlib) \
+  --with-bz2=$(brew --prefix bzip2) \
+  --with-iconv=$(brew --prefix libiconv) \
+  --with-libedit --with-tidy=$(brew --prefix tidy-html5) \
+  --with-oniguruma=$(brew --prefix oniguruma) \
+  --with-openssl=$(brew --prefix openssl@1.1)"
+export PKG_CONFIG_PATH="\
+  $(brew --prefix krb5)/lib/pkgconfig:\
+  $(brew --prefix openssl@1.1)/lib/pkgconfig:\
+  $(brew --prefix icu4c)/lib/pkgconfig:\
+  $(brew --prefix libedit)/lib/pkgconfig:\
+  $(brew --prefix libxml2)/lib/pkgconfig:"
+
+alias filegrep="find . -type f -print0 | xargs -0 grep -n --color=auto"
+alias fdgrep="fd . --type f | grep -n --color=auto"
+alias apachectl="/Applications/MAMP/bin/apache2/bin/apachectl"
+alias mysql="/Applications/MAMP/Library/bin/mysql"
+alias dps="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\t'"
+alias sail="sh vendor/bin/sail"
+alias openssl="/usr/local/opt/openssl@1.1/bin/openssl"
+
+function asset-downloader() {
+    node /Users/hayato/.anyenv/envs/nodenv/versions/16.11.0/bin/asset-downloader  $@
+}
+
+# fasd
+eval "$(fasd --init auto)"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# fzf
+#eval "$(fzf --zsh)"
+
+function claude() {
+    open /Applications/Claude.app/
+}
+
+export OPENAI_API_KEY="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"
