@@ -1,0 +1,61 @@
+[user]
+	name = TOMINAGA HAYATO
+	email = tominaga_h@mad2007.co.jp
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added = yellow
+    changed = green
+
+[alias]
+    s = status
+    b = branch
+    ls = ls-tree
+    co = checkout
+    cm = commit
+    df = diff
+    cat = cat-file
+    log-one = log --oneline
+    log-check = log --oneline --stat -n 5
+    log-graph = log --graph --decorate=full
+
+[core]
+    pager = lv -c
+    editor = vim
+    quotepath = false
+	excludesfile = /Users/hayato/.gitignore_global
+
+[help]
+    autocorrect = 1
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[pager]
+	branch = false
+[http]
+	version = HTTP/1.1
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/hayato/.stCommitMsg
