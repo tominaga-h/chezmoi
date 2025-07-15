@@ -142,4 +142,3 @@ function claude() {
     open /Applications/Claude.app/
 }
 
-export OPENAI_API_KEY="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"
