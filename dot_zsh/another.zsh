@@ -11,4 +11,4 @@ limit coredumpsize 0 # core 抑制
 export G_FILENAME_ENCODING=@locale
 
 # anyenv
-eval "$(anyenv init -)"
+# eval "$(anyenv init -)"
